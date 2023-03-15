@@ -11,15 +11,19 @@ class Post(models.Model):
     author = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
-        related_name='posts'
+        related_name='posts',
+        verbose_name='Автор'
     )
     group = models.ForeignKey(
         'Group',
-        blank=True,
-        null=True,
+        blank=True, null=True,
         on_delete=models.CASCADE,
-        related_name='groups'
+        related_name='groups',
+        verbose_name='Группа'
     )
+
+    class Meta:
+        ordering = ['-pub_date']
 
 
 class Group(models.Model):
